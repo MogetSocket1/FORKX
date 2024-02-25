@@ -12,14 +12,12 @@ import { en, es, id, ar, pt } from './lib/idiomas/total-idiomas.js'
 // ES ➜ Si desea recibir reportes debe de usar los tres parámetros (Número, nombre y true)
 // EN ➜ Add the Bot number as priority first
 // EN ➜ If you want to receive reports you must use the three parameters (Number, name and true)
-global.owner = [
-['212621851554', '𝙊𝙬𝙣𝙚𝙧', true], //𝙂𝙖𝙩𝙖𝘽𝙤𝙩𝙇𝙞𝙩𝙚-𝙈𝘿 🌻🐈
-['212621851554', '𝘼𝙨𝙞𝙨𝙩𝙚𝙣𝙘𝙞𝙖', true],
-['212621851554', 'Develooper', true],
-['212621851554'], ['212621851554'], ['212621851554'], ["212621851554"], ['212621851554'], ['212621851554']]
+global.owner = [["212658323376","KarimAlyamai",true]]
 
-global.mods = ['212621851554'] 
-global.prems = ['212621851554']
+global.mods = [
+  ["212658323376","KarimAlyamai",true],
+  ["212658323376","KarimAlyamai",true],]
+global.prems = ["212658323376"]
    
 // ES ➜ Agregue el código de idioma el cual usará GataBot  
 // EN ➜ Add the language code which GataBot will use

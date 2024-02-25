@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
       - name: clone the project 
-        run: git clone https://github.com/ANGILO856122/FORKX
+        run: git clone https://github.com/Kbot19/FORKX
       - name: Install dependencies
         run: rm -rf pakcage-lock.json && npm i
       - name: Start The Code

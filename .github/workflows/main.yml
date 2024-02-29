@@ -19,14 +19,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - name: clone the project 
+
+      - name: Clone the project
         run: git clone https://github.com/Kbot19/FORKX
-      - name: Install dependencies
-        run: rm -rf pakcage-lock.json && npm i
+
       - name: Start The Code
-        run:  npm start &
-        
-          
+        run: npm start &
+
       - name: keep alive
         id: check_runs
         run: |
@@ -41,20 +40,14 @@ jobs:
               break
             fi
           done
-          
-      - name: Commit the logs
+
+      - name: Commit and push changes
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'action@github.com'
           git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "out session update" --allow-empty)
-          
-      - name: push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
-      
+          git diff-index --quiet HEAD || (git commit -a -m "out session update" --allow-empty && git push origin master)
+
       - name: Stop workflow
         if: steps.check_runs.outputs.has_new_run == 'true'
         run: exit 0

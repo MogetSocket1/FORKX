@@ -20,9 +20,6 @@ jobs:
         with:
           node-version: 16
 
-      - name: Clone the project
-        run: git clone https://github.com/Kbot19/FORKX
-
       - name: Start The Code
         run: npm start &
 
@@ -41,12 +38,24 @@ jobs:
             fi
           done
 
-      - name: Commit and push changes
+      - name: Clone the project
+        if: steps.check_runs.outputs.has_new_run == 'true'
+        run: git clone https://github.com/Kbot19/FORKX
+
+      - name: Commit the logs
+        if: steps.check_runs.outputs.has_new_run == 'true'
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'action@github.com'
           git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "out session update" --allow-empty && git push origin master)
+          git diff-index --quiet HEAD || (git commit -a -m "out session update" --allow-empty)
+
+      - name: Push changes
+        if: steps.check_runs.outputs.has_new_run == 'true'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
 
       - name: Stop workflow
         if: steps.check_runs.outputs.has_new_run == 'true'

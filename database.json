@@ -2923,7 +2923,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 11062,
+      "exp": 11250,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -10100,10 +10100,10 @@
       "lastSuccess": 1708880500690
     },
     "owner-exec2.js": {
-      "total": 52,
-      "success": 52,
-      "last": 1709251444516,
-      "lastSuccess": 1709251444516
+      "total": 58,
+      "success": 58,
+      "last": 1709296934975,
+      "lastSuccess": 1709296934975
     },
     "jadibot-serbot.js": {
       "total": 3,
@@ -10124,10 +10124,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 24,
-      "success": 24,
-      "last": 1709285123452,
-      "lastSuccess": 1709285123452
+      "total": 26,
+      "success": 26,
+      "last": 1709296929433,
+      "lastSuccess": 1709296929433
     },
     "general-makeacc.js": {
       "total": 22,
@@ -10136,10 +10136,10 @@
       "lastSuccess": 1709236286208
     },
     "downloader-apk.js": {
-      "total": 45,
-      "success": 33,
-      "last": 1709285313215,
-      "lastSuccess": 1709285313215
+      "total": 46,
+      "success": 34,
+      "last": 1709297035205,
+      "lastSuccess": 1709297035205
     },
     "owner-accs.js": {
       "total": 5,
@@ -10148,10 +10148,10 @@
       "lastSuccess": 1709236302638
     },
     "safile.js": {
-      "total": 14,
-      "success": 11,
-      "last": 1709247746668,
-      "lastSuccess": 1709247746668
+      "total": 15,
+      "success": 12,
+      "last": 1709296986028,
+      "lastSuccess": 1709296986028
     },
     "general-delacc.js": {
       "total": 2,

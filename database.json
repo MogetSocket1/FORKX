@@ -486,7 +486,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 159,
+      "exp": 168,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -2923,7 +2923,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 11033,
+      "exp": 11062,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -8681,10 +8681,10 @@
       "lastSuccess": 1708880500690
     },
     "owner-exec2.js": {
-      "total": 51,
-      "success": 51,
-      "last": 1709247739119,
-      "lastSuccess": 1709247739119
+      "total": 52,
+      "success": 52,
+      "last": 1709251444516,
+      "lastSuccess": 1709251444516
     },
     "jadibot-serbot.js": {
       "total": 3,

@@ -5027,7 +5027,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 53,
+      "exp": 59,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -14699,10 +14699,10 @@
       "lastSuccess": 1709236286208
     },
     "downloader-apk.js": {
-      "total": 51,
-      "success": 39,
-      "last": 1709328842538,
-      "lastSuccess": 1709328842538
+      "total": 52,
+      "success": 40,
+      "last": 1709336170640,
+      "lastSuccess": 1709336170640
     },
     "owner-accs.js": {
       "total": 5,

@@ -3334,7 +3334,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 11597,
+      "exp": 11631,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -11464,10 +11464,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 35,
-      "success": 35,
-      "last": 1709301596543,
-      "lastSuccess": 1709301596543
+      "total": 37,
+      "success": 37,
+      "last": 1709318132683,
+      "lastSuccess": 1709318132683
     },
     "general-makeacc.js": {
       "total": 22,

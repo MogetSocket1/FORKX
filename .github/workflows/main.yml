@@ -1,5 +1,4 @@
 name: The Bot Host
-
 on:
   workflow_dispatch:
   push:
@@ -10,28 +9,24 @@ on:
       - master
   schedule:
     - cron: "*/30 * * * *"
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 16
-
       - name: clone the project 
         run: git clone https://github.com/Kbot19/FORKX
-
       - name: Install dependencies
         run: rm -rf pakcage-lock.json && npm i
-
       - name: Start The Code
         run:  npm start &
-
+        
+          
       - name: keep alive
         id: check_runs
         run: |
@@ -46,34 +41,20 @@ jobs:
               break
             fi
           done
-
+          
       - name: Commit the logs
-        if: steps.check_runs.outputs.has_new_run == 'true'
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'action@github.com'
           git add -A
           git diff-index --quiet HEAD || (git commit -a -m "out session update" --allow-empty)
-
+          
       - name: push changes
-        if: steps.check_runs.outputs.has_new_run == 'true'
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
-
-      - name: Clone project again
-        if: steps.check_runs.outputs.has_new_run == 'true'
-        run: git clone https://github.com/Kbot19/FORKX
-
-      - name: Install dependencies again
-        if: steps.check_runs.outputs.has_new_run == 'true'
-        run: rm -rf pakcage-lock.json && npm i
-
-      - name: Start The Code again
-        if: steps.check_runs.outputs.has_new_run == 'true'
-        run: npm start &
-
+      
       - name: Stop workflow
         if: steps.check_runs.outputs.has_new_run == 'true'
         run: exit 0

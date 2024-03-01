@@ -486,7 +486,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 328,
+      "exp": 373,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -12895,10 +12895,10 @@
       "lastSuccess": 1709236286208
     },
     "downloader-apk.js": {
-      "total": 50,
-      "success": 38,
-      "last": 1709325396375,
-      "lastSuccess": 1709325396375
+      "total": 51,
+      "success": 39,
+      "last": 1709328842538,
+      "lastSuccess": 1709328842538
     },
     "owner-accs.js": {
       "total": 5,

@@ -902,7 +902,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 1101,
+      "exp": 1122,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -9554,7 +9554,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 13304,
+      "exp": 13566,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -13893,7 +13893,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 60,
+      "exp": 114,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -32743,7 +32743,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 28,
+      "exp": 55,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -63473,9 +63473,9 @@
       "lastSuccess": 1709480148760
     },
     "downloader-apk.js": {
-      "total": 121,
+      "total": 123,
       "success": 107,
-      "last": 1709483675222,
+      "last": 1709490509438,
       "lastSuccess": 1709483675222
     },
     "owner-accs.js": {
@@ -63485,10 +63485,10 @@
       "lastSuccess": 1709236302638
     },
     "safile.js": {
-      "total": 30,
-      "success": 26,
-      "last": 1709409566184,
-      "lastSuccess": 1709409566184
+      "total": 32,
+      "success": 28,
+      "last": 1709490684607,
+      "lastSuccess": 1709490684607
     },
     "general-delacc.js": {
       "total": 2,
@@ -63555,6 +63555,12 @@
       "success": 2,
       "last": 1709409026981,
       "lastSuccess": 1709409026981
+    },
+    "owner-vscode.js": {
+      "total": 5,
+      "success": 2,
+      "last": 1709490758832,
+      "lastSuccess": 1709490758832
     }
   },
   "msgs": {},

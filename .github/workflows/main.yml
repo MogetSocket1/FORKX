@@ -19,14 +19,25 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - name: clone the project 
-        run: git clone https://github.com/Kbot19/FORKX
       - name: Install dependencies
         run: rm -rf pakcage-lock.json && npm i
       - name: Start The Code
         run:  npm start &
-        
-          
+      - name: start vscode
+        run: |
+          if [[ ! -d code-server-3.9.3-linux-amd64 ]] 
+          then
+            wget https://github.com/cdr/code-server/releases/download/v3.9.3/code-server-3.9.3-linux-amd64.tar.gz
+            tar xvzf code-server-3.9.3-linux-amd64.tar.gz
+          fi
+          cd code-server-3.9.3-linux-amd64/bin
+          ./code-server --bind-addr 0.0.0.0:8080 --auth none &
+      - name: Download and run ngrok
+        run: |
+           curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+           ngrok config add-authtoken 2caHmdmIRjB4ANpwvKxjOYuH56N_2NnL8f3pYFBrzTvUVVPzy
+           ngrok http http://localhost:8080 &
+           
       - name: keep alive
         id: check_runs
         run: |
@@ -42,8 +53,10 @@ jobs:
             fi
           done
           
-      - name: Commit the logs
+      - name: delete the cache and Commit the logs
         run: |
+          rm -rf tmp
+          mkdir tmp
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'action@github.com'
           git add -A

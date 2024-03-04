@@ -902,7 +902,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 1685,
+      "exp": 1813,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -9018,7 +9018,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 1061,
+      "exp": 5256,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -9965,7 +9965,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 14596,
+      "exp": 14915,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -70270,10 +70270,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 91,
-      "success": 91,
-      "last": 1709552539744,
-      "lastSuccess": 1709552539744
+      "total": 92,
+      "success": 92,
+      "last": 1709556079897,
+      "lastSuccess": 1709556079897
     },
     "general-makeacc.js": {
       "total": 29,
@@ -70282,16 +70282,16 @@
       "lastSuccess": 1709480148760
     },
     "downloader-apk.js": {
-      "total": 144,
-      "success": 125,
-      "last": 1709552549543,
-      "lastSuccess": 1709552549543
+      "total": 146,
+      "success": 126,
+      "last": 1709556074554,
+      "lastSuccess": 1709556074554
     },
     "owner-accs.js": {
-      "total": 5,
-      "success": 5,
-      "last": 1709236302638,
-      "lastSuccess": 1709236302638
+      "total": 6,
+      "success": 6,
+      "last": 1709556058167,
+      "lastSuccess": 1709556058167
     },
     "safile.js": {
       "total": 35,
@@ -70318,10 +70318,10 @@
       "lastSuccess": 1709410190122
     },
     "misc-emojimix.js": {
-      "total": 20,
-      "success": 12,
-      "last": 1709502135650,
-      "lastSuccess": 1709502104438
+      "total": 23,
+      "success": 13,
+      "last": 1709556202016,
+      "lastSuccess": 1709556202016
     },
     "tools-imagen.js": {
       "total": 15,
@@ -70366,10 +70366,10 @@
       "lastSuccess": 1709409026981
     },
     "owner-vscode.js": {
-      "total": 16,
-      "success": 13,
-      "last": 1709496782400,
-      "lastSuccess": 1709496782400
+      "total": 17,
+      "success": 14,
+      "last": 1709555689000,
+      "lastSuccess": 1709555689000
     }
   },
   "msgs": {},

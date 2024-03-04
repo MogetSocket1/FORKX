@@ -9018,7 +9018,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 5258,
+      "exp": 5263,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -9965,7 +9965,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 15056,
+      "exp": 15130,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -65632,7 +65632,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 8,
+      "exp": 11,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -65920,7 +65920,7 @@
       "sworddurability": 0,
       "tigame": 50,
       "tiketcoin": 0,
-      "title": "",
+      "title": 0,
       "tomat": 0,
       "tprem": 0,
       "trash": 0,
@@ -65953,7 +65953,31 @@
         "progression": null,
         "step": null,
         "soal": null
-      }
+      },
+      "IDregister": 0,
+      "premiumDate": -1,
+      "catexp": 0,
+      "enchant": 0,
+      "glimit": 15,
+      "glory": 0,
+      "healthmonster": 0,
+      "kyubiexp": 0,
+      "kyubilastfeed": 0,
+      "lastbansos": 0,
+      "lastcodereg": 0,
+      "lastgift": 0,
+      "lastIstigfar": 0,
+      "lastrampok": 0,
+      "lastsda": 0,
+      "lastwar": 0,
+      "pancing": 0,
+      "pertambangan": 0,
+      "pertanian": 0,
+      "petFood": 0,
+      "psenjata": 0,
+      "psepick": 0,
+      "robo": 0,
+      "roboxp": 0
     },
     "212710501225@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -71160,10 +71184,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 94,
-      "success": 94,
-      "last": 1709569911197,
-      "lastSuccess": 1709569911197
+      "total": 95,
+      "success": 95,
+      "last": 1709571217499,
+      "lastSuccess": 1709571217499
     },
     "general-makeacc.js": {
       "total": 29,
@@ -71172,9 +71196,9 @@
       "lastSuccess": 1709480148760
     },
     "downloader-apk.js": {
-      "total": 149,
+      "total": 151,
       "success": 128,
-      "last": 1709569871571,
+      "last": 1709570329032,
       "lastSuccess": 1709569871571
     },
     "owner-accs.js": {
@@ -71256,10 +71280,10 @@
       "lastSuccess": 1709409026981
     },
     "owner-vscode.js": {
-      "total": 19,
-      "success": 16,
-      "last": 1709570087722,
-      "lastSuccess": 1709570087722
+      "total": 21,
+      "success": 18,
+      "last": 1709570366927,
+      "lastSuccess": 1709570366927
     }
   },
   "msgs": {},

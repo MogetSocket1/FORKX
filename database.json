@@ -44526,7 +44526,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 45,
+      "exp": 97,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -67951,6 +67951,38 @@
       "antiTraba": true,
       "autolevelup": false,
       "expired": 0
+    },
+    "212679163063@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": true,
+      "detect": true,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "delete": false,
+      "modohorny": true,
+      "stickers": false,
+      "autosticker": false,
+      "audios": false,
+      "antiver": false,
+      "antiLink": false,
+      "antiLink2": false,
+      "antiTiktok": false,
+      "antiYoutube": false,
+      "antiTelegram": false,
+      "antiFacebook": false,
+      "antiInstagram": false,
+      "antiTwitter": false,
+      "antifake": false,
+      "reaction": true,
+      "viewonce": true,
+      "modoadmin": false,
+      "antitoxic": true,
+      "simi": false,
+      "antiTraba": true,
+      "autolevelup": false,
+      "expired": 0
     }
   },
   "stats": {
@@ -68039,10 +68071,10 @@
       "lastSuccess": 1709502104438
     },
     "tools-imagen.js": {
-      "total": 12,
-      "success": 9,
-      "last": 1709512940600,
-      "lastSuccess": 1709512940600
+      "total": 15,
+      "success": 11,
+      "last": 1709520811640,
+      "lastSuccess": 1709520811640
     },
     "general-wm.js": {
       "total": 4,

@@ -9018,7 +9018,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 5263,
+      "exp": 5288,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -73052,10 +73052,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 96,
-      "success": 96,
-      "last": 1709580193015,
-      "lastSuccess": 1709580193015
+      "total": 97,
+      "success": 97,
+      "last": 1709619078265,
+      "lastSuccess": 1709619078265
     },
     "general-makeacc.js": {
       "total": 29,
@@ -73064,10 +73064,10 @@
       "lastSuccess": 1709480148760
     },
     "downloader-apk.js": {
-      "total": 153,
-      "success": 130,
-      "last": 1709580231621,
-      "lastSuccess": 1709580231621
+      "total": 155,
+      "success": 132,
+      "last": 1709619092840,
+      "lastSuccess": 1709619092840
     },
     "owner-accs.js": {
       "total": 6,

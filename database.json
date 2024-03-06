@@ -9434,7 +9434,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 5297,
+      "exp": 5351,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -37076,7 +37076,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 50,
+      "exp": 177,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -81160,10 +81160,10 @@
       "lastSuccess": 1709480148760
     },
     "downloader-apk.js": {
-      "total": 164,
-      "success": 140,
-      "last": 1709677267428,
-      "lastSuccess": 1709677267428
+      "total": 168,
+      "success": 144,
+      "last": 1709708287430,
+      "lastSuccess": 1709708287430
     },
     "owner-accs.js": {
       "total": 6,
@@ -81178,9 +81178,9 @@
       "lastSuccess": 1709499676377
     },
     "general-delacc.js": {
-      "total": 2,
+      "total": 3,
       "success": 2,
-      "last": 1709236173857,
+      "last": 1709708182935,
       "lastSuccess": 1709236173857
     },
     "tools-fetch.js": {
@@ -81196,9 +81196,9 @@
       "lastSuccess": 1709410190122
     },
     "misc-emojimix.js": {
-      "total": 29,
+      "total": 30,
       "success": 17,
-      "last": 1709577396842,
+      "last": 1709707920030,
       "lastSuccess": 1709577396842
     },
     "tools-imagen.js": {
@@ -81208,9 +81208,9 @@
       "lastSuccess": 1709580213134
     },
     "general-wm.js": {
-      "total": 4,
+      "total": 5,
       "success": 0,
-      "last": 1709483568846,
+      "last": 1709708090149,
       "lastSuccess": 0
     },
     "tools-hd.js": {
@@ -81220,9 +81220,9 @@
       "lastSuccess": 1709498292932
     },
     "downloader-git.js": {
-      "total": 7,
+      "total": 8,
       "success": 2,
-      "last": 1709580244881,
+      "last": 1709707971532,
       "lastSuccess": 1709405745501
     },
     "owner-exec.js": {
@@ -81232,9 +81232,9 @@
       "lastSuccess": 1709392165212
     },
     "tools-ocr.js": {
-      "total": 7,
+      "total": 8,
       "success": 0,
-      "last": 1709483260718,
+      "last": 1709707868941,
       "lastSuccess": 0
     },
     "misc-join.js": {

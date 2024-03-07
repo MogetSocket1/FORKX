@@ -1,7 +1,24 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  if (!args[0]) throw 'Ex: ' + usedPrefix + command + ' minecraft';
+  let user = global.db.data.users[m.sender];
+  let attempts = user.attempts || 0;
+
+  if (attempts >= 5) {
+    let time = user.lastAttempt + 3600000;
+    if (new Date() - user.lastAttempt < 3600000)
+      throw `🚫 *You have used all your attempts, try again in *${msToTime(
+        time - new Date()
+      )}*`;
+    else
+      user.attempts = 0;
+  }
+
+  user.attempts = attempts + 1;
+  user.lastAttempt = new Date() * 1;
+
+  if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
+
   let info = await apkinfo(text);
   let res = await apk(text);
 
@@ -37,8 +54,6 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 handler.help = ['apk'];
 handler.tags = ['downloader'];
 handler.command = /^(apk)$/i;
-handler.rowner = true
-handler.register = true
 export default handler;
 
 async function apkinfo(url) {
@@ -102,4 +117,17 @@ async function obb(url, conn) {
   let icon = $.datalist.list[0].icon;
   let mimetype = (await fetch(download, { method: 'head' })).headers.get('content-type');
   return { fileName, mimetype, download };
+}
+
+function msToTime(duration) {
+  var milliseconds = parseInt((duration % 1000) / 100),
+      seconds = Math.floor((duration / 1000) % 60),
+      minutes = Math.floor((duration / (1000 * 60)) % 60),
+      hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  hours = (hours < 10) ? '0' + hours : hours;
+  minutes = (minutes < 10) ? '0' + minutes : minutes;
+  seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+  return hours + ' Hours ' + minutes + ' Minutes ' + seconds + ' Seconds';
 }

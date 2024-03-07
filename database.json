@@ -902,7 +902,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 1957,
+      "exp": 2020,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -8491,7 +8491,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 25,
+      "exp": 26,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -10261,7 +10261,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 5472,
+      "exp": 5475,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -11208,7 +11208,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 15504,
+      "exp": 15625,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -38344,7 +38344,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 60,
+      "exp": 82,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -97767,10 +97767,10 @@
       "lastSuccess": 1708880500690
     },
     "owner-exec2.js": {
-      "total": 80,
-      "success": 80,
-      "last": 1709499763041,
-      "lastSuccess": 1709499763041
+      "total": 82,
+      "success": 82,
+      "last": 1709816642479,
+      "lastSuccess": 1709816642479
     },
     "jadibot-serbot.js": {
       "total": 11,
@@ -97791,10 +97791,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 129,
-      "success": 129,
-      "last": 1709812441091,
-      "lastSuccess": 1709812441091
+      "total": 130,
+      "success": 130,
+      "last": 1709815658142,
+      "lastSuccess": 1709815658142
     },
     "general-makeacc.js": {
       "total": 29,
@@ -97815,10 +97815,10 @@
       "lastSuccess": 1709556058167
     },
     "safile.js": {
-      "total": 35,
-      "success": 31,
-      "last": 1709499676377,
-      "lastSuccess": 1709499676377
+      "total": 36,
+      "success": 32,
+      "last": 1709815836302,
+      "lastSuccess": 1709815836302
     },
     "general-delacc.js": {
       "total": 4,

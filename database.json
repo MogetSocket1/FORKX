@@ -12875,7 +12875,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 16662,
+      "exp": 16675,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -28166,7 +28166,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 296,
+      "exp": 314,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -28512,8 +28512,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 8,
-      "lastAttempt": 1709903446329
+      "attempts": 9,
+      "lastAttempt": 1709908845316
     },
     "212632278056@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -37415,7 +37415,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 281,
+      "exp": 284,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -100659,7 +100659,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 117,
+      "exp": 191,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -101005,8 +101005,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 5,
-      "lastAttempt": 1709841433139
+      "attempts": 6,
+      "lastAttempt": 1709909338653
     },
     "212780183502@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -101102,7 +101102,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 259,
+      "exp": 279,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -128228,10 +128228,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 164,
-      "success": 164,
-      "last": 1709906201892,
-      "lastSuccess": 1709906201892
+      "total": 165,
+      "success": 165,
+      "last": 1709909124143,
+      "lastSuccess": 1709909124143
     },
     "general-makeacc.js": {
       "total": 30,
@@ -128240,10 +128240,10 @@
       "lastSuccess": 1709831747520
     },
     "downloader-apk.js": {
-      "total": 420,
-      "success": 281,
-      "last": 1709908554837,
-      "lastSuccess": 1709907851765
+      "total": 425,
+      "success": 283,
+      "last": 1709909432697,
+      "lastSuccess": 1709909342437
     },
     "owner-accs.js": {
       "total": 6,

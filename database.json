@@ -902,7 +902,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 2415,
+      "exp": 2423,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -108184,7 +108184,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 72,
+      "exp": 97,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -108530,8 +108530,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 4,
-      "lastAttempt": 1709886652165
+      "attempts": 5,
+      "lastAttempt": 1709940173216
     },
     "212777965075@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -136800,10 +136800,10 @@
       "lastSuccess": 1709831747520
     },
     "downloader-apk.js": {
-      "total": 490,
-      "success": 298,
-      "last": 1709936534701,
-      "lastSuccess": 1709934067194
+      "total": 492,
+      "success": 299,
+      "last": 1709940197737,
+      "lastSuccess": 1709940178657
     },
     "owner-accs.js": {
       "total": 6,

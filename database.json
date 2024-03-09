@@ -12879,7 +12879,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 18126,
+      "exp": 18143,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -37419,7 +37419,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 382,
+      "exp": 384,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -105976,7 +105976,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 83,
+      "exp": 151,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -106322,8 +106322,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 2,
-      "lastAttempt": 1709845395467
+      "attempts": 4,
+      "lastAttempt": 1710019026437
     },
     "212698484961@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -146661,10 +146661,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 200,
-      "success": 200,
-      "last": 1710018521857,
-      "lastSuccess": 1710018521857
+      "total": 201,
+      "success": 201,
+      "last": 1710019014346,
+      "lastSuccess": 1710019014346
     },
     "general-makeacc.js": {
       "total": 32,
@@ -146673,9 +146673,9 @@
       "lastSuccess": 1710015655995
     },
     "downloader-apk.js": {
-      "total": 576,
+      "total": 578,
       "success": 325,
-      "last": 1710018515478,
+      "last": 1710019027570,
       "lastSuccess": 1710017318947
     },
     "owner-accs.js": {

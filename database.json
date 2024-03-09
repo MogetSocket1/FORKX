@@ -43992,7 +43992,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 382,
+      "exp": 383,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -119991,7 +119991,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 142,
+      "exp": 190,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -120337,8 +120337,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 5,
-      "lastAttempt": 1709894001659
+      "attempts": 6,
+      "lastAttempt": 1709980504611
     },
     "212702786366@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -136800,9 +136800,9 @@
       "lastSuccess": 1709831747520
     },
     "downloader-apk.js": {
-      "total": 502,
+      "total": 505,
       "success": 301,
-      "last": 1709973966891,
+      "last": 1709980560036,
       "lastSuccess": 1709973966891
     },
     "owner-accs.js": {

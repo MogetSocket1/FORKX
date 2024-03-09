@@ -902,7 +902,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 2591,
+      "exp": 2687,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -12879,7 +12879,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 17256,
+      "exp": 17508,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -17222,7 +17222,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 114,
+      "exp": 266,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -39602,7 +39602,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 569,
+      "exp": 672,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -39948,8 +39948,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 5,
-      "lastAttempt": 1709924687268
+      "attempts": 6,
+      "lastAttempt": 1709987526946
     },
     "212714979677@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -40927,7 +40927,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 34,
+      "exp": 79,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -41272,7 +41272,9 @@
       "psenjata": 0,
       "psepick": 0,
       "robo": 0,
-      "roboxp": 0
+      "roboxp": 0,
+      "attempts": 2,
+      "lastAttempt": 1709987414778
     },
     "212656613992@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -125171,7 +125173,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 18,
+      "exp": 22,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -137680,10 +137682,10 @@
       "lastSuccess": 1708880500690
     },
     "owner-exec2.js": {
-      "total": 88,
-      "success": 88,
-      "last": 1709981809847,
-      "lastSuccess": 1709981809847
+      "total": 89,
+      "success": 89,
+      "last": 1709987043618,
+      "lastSuccess": 1709987043618
     },
     "jadibot-serbot.js": {
       "total": 11,
@@ -137704,10 +137706,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 186,
-      "success": 186,
-      "last": 1709974095171,
-      "lastSuccess": 1709974095171
+      "total": 187,
+      "success": 187,
+      "last": 1709987660246,
+      "lastSuccess": 1709987660246
     },
     "general-makeacc.js": {
       "total": 30,
@@ -137716,10 +137718,10 @@
       "lastSuccess": 1709831747520
     },
     "downloader-apk.js": {
-      "total": 510,
-      "success": 302,
-      "last": 1709983421066,
-      "lastSuccess": 1709983069076
+      "total": 514,
+      "success": 303,
+      "last": 1709987640968,
+      "lastSuccess": 1709987531480
     },
     "owner-accs.js": {
       "total": 6,
@@ -137740,15 +137742,15 @@
       "lastSuccess": 1709236173857
     },
     "tools-fetch.js": {
-      "total": 37,
-      "success": 22,
-      "last": 1709923692433,
-      "lastSuccess": 1709923692433
+      "total": 46,
+      "success": 28,
+      "last": 1709987298080,
+      "lastSuccess": 1709987298080
     },
     "downloader-mediafire.js": {
-      "total": 81,
+      "total": 83,
       "success": 49,
-      "last": 1709982424260,
+      "last": 1709987940026,
       "lastSuccess": 1709982424260
     },
     "misc-emojimix.js": {
@@ -137776,9 +137778,9 @@
       "lastSuccess": 1709846083664
     },
     "downloader-git.js": {
-      "total": 14,
+      "total": 15,
       "success": 3,
-      "last": 1709934684069,
+      "last": 1709987701746,
       "lastSuccess": 1709842509999
     },
     "owner-exec.js": {

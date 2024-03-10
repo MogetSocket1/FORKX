@@ -17222,7 +17222,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 326,
+      "exp": 335,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -17663,7 +17663,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 10192,
+      "exp": 10211,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -146661,10 +146661,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 201,
-      "success": 201,
-      "last": 1710019014346,
-      "lastSuccess": 1710019014346
+      "total": 202,
+      "success": 202,
+      "last": 1710032778870,
+      "lastSuccess": 1710032778870
     },
     "general-makeacc.js": {
       "total": 32,

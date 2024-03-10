@@ -38720,7 +38720,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 31,
+      "exp": 93,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -39065,7 +39065,9 @@
       "psenjata": 0,
       "psepick": 0,
       "robo": 0,
-      "roboxp": 0
+      "roboxp": 0,
+      "attempts": 2,
+      "lastAttempt": 1710062944779
     },
     "212706764484@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -39602,7 +39604,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 817,
+      "exp": 835,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -99782,7 +99784,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 196,
+      "exp": 245,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -100128,8 +100130,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 7,
-      "lastAttempt": 1710022616659
+      "attempts": 8,
+      "lastAttempt": 1710062603130
     },
     "212680745059@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -130889,7 +130891,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 191,
+      "exp": 248,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -147553,10 +147555,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 204,
-      "success": 204,
-      "last": 1710057321313,
-      "lastSuccess": 1710057321313
+      "total": 206,
+      "success": 206,
+      "last": 1710062908788,
+      "lastSuccess": 1710062908788
     },
     "general-makeacc.js": {
       "total": 32,
@@ -147565,9 +147567,9 @@
       "lastSuccess": 1710015655995
     },
     "downloader-apk.js": {
-      "total": 591,
+      "total": 598,
       "success": 330,
-      "last": 1710061656347,
+      "last": 1710063099087,
       "lastSuccess": 1710060899512
     },
     "owner-accs.js": {
@@ -147595,9 +147597,9 @@
       "lastSuccess": 1710010938350
     },
     "downloader-mediafire.js": {
-      "total": 103,
+      "total": 104,
       "success": 63,
-      "last": 1710023118742,
+      "last": 1710062504230,
       "lastSuccess": 1710018241929
     },
     "misc-emojimix.js": {

@@ -12764,7 +12764,7 @@
       "regTime": -1,
       "registered": false,
       "role": "*NOVATO(A)* 🪤",
-      "exp": 6213,
+      "exp": 6232,
       "joincount": 1,
       "registroR": false,
       "registroC": false,
@@ -13713,7 +13713,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 19272,
+      "exp": 19557,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -14059,8 +14059,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 10,
-      "lastAttempt": 1710162973364
+      "attempts": 11,
+      "lastAttempt": 1710173862723
     },
     "DarkNess-01": "212658323376@s.whatsapp.net",
     "212617533114@s.whatsapp.net": {
@@ -116955,7 +116955,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 70,
+      "exp": 133,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -117301,8 +117301,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 2,
-      "lastAttempt": 1710026068124
+      "attempts": 5,
+      "lastAttempt": 1710174660848
     },
     "212707820945@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -187152,10 +187152,10 @@
       "lastSuccess": 1708880500690
     },
     "owner-exec2.js": {
-      "total": 98,
-      "success": 98,
-      "last": 1710163154345,
-      "lastSuccess": 1710163154345
+      "total": 101,
+      "success": 101,
+      "last": 1710174794815,
+      "lastSuccess": 1710174794815
     },
     "jadibot-serbot.js": {
       "total": 11,
@@ -187176,10 +187176,10 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 251,
-      "success": 251,
-      "last": 1710171142042,
-      "lastSuccess": 1710171142042
+      "total": 254,
+      "success": 254,
+      "last": 1710174759248,
+      "lastSuccess": 1710174759248
     },
     "general-makeacc.js": {
       "total": 36,
@@ -187188,10 +187188,10 @@
       "lastSuccess": 1710015655995
     },
     "downloader-apk.js": {
-      "total": 763,
-      "success": 404,
-      "last": 1710171242489,
-      "lastSuccess": 1710171190705
+      "total": 769,
+      "success": 406,
+      "last": 1710174996944,
+      "lastSuccess": 1710174663943
     },
     "owner-accs.js": {
       "total": 6,
@@ -187200,10 +187200,10 @@
       "lastSuccess": 1709556058167
     },
     "safile.js": {
-      "total": 46,
-      "success": 41,
-      "last": 1710163067466,
-      "lastSuccess": 1710163067466
+      "total": 48,
+      "success": 43,
+      "last": 1710174756583,
+      "lastSuccess": 1710174756583
     },
     "general-delacc.js": {
       "total": 4,
@@ -187288,6 +187288,12 @@
       "success": 3,
       "last": 1709853134405,
       "lastSuccess": 1709853134405
+    },
+    "tools-ssweb.js": {
+      "total": 2,
+      "success": 0,
+      "last": 1710174772476,
+      "lastSuccess": 0
     }
   },
   "msgs": {},

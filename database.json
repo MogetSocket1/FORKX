@@ -151379,7 +151379,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 369,
+      "exp": 563,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -151725,8 +151725,8 @@
       "psepick": 0,
       "robo": 0,
       "roboxp": 0,
-      "attempts": 6,
-      "lastAttempt": 1710096048650
+      "attempts": 7,
+      "lastAttempt": 1710141966517
     },
     "212605769247@s.whatsapp.net": {
       "counterPrivate": 0,
@@ -172248,22 +172248,22 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 232,
-      "success": 232,
-      "last": 1710120530133,
-      "lastSuccess": 1710120530133
+      "total": 234,
+      "success": 234,
+      "last": 1710142269267,
+      "lastSuccess": 1710142269267
     },
     "general-makeacc.js": {
-      "total": 33,
+      "total": 34,
       "success": 20,
-      "last": 1710120573789,
+      "last": 1710142306916,
       "lastSuccess": 1710015655995
     },
     "downloader-apk.js": {
-      "total": 691,
-      "success": 369,
-      "last": 1710122491147,
-      "lastSuccess": 1710122491147
+      "total": 696,
+      "success": 370,
+      "last": 1710142225672,
+      "lastSuccess": 1710141968942
     },
     "owner-accs.js": {
       "total": 6,
@@ -172350,10 +172350,10 @@
       "lastSuccess": 1709751369464
     },
     "ramdan-ayati.js": {
-      "total": 5,
-      "success": 5,
-      "last": 1710077303710,
-      "lastSuccess": 1710077303710
+      "total": 6,
+      "success": 6,
+      "last": 1710142363424,
+      "lastSuccess": 1710142363424
     },
     "ai-report.js": {
       "total": 7,

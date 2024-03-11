@@ -74406,7 +74406,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 20,
+      "exp": 26,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -151379,7 +151379,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 660,
+      "exp": 732,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -172248,21 +172248,21 @@
       "lastSuccess": 1708879774591
     },
     "general-menu.js": {
-      "total": 235,
-      "success": 235,
-      "last": 1710148220165,
-      "lastSuccess": 1710148220165
+      "total": 236,
+      "success": 236,
+      "last": 1710148574494,
+      "lastSuccess": 1710148574494
     },
     "general-makeacc.js": {
-      "total": 34,
+      "total": 35,
       "success": 20,
-      "last": 1710142306916,
+      "last": 1710148598463,
       "lastSuccess": 1710015655995
     },
     "downloader-apk.js": {
-      "total": 705,
+      "total": 707,
       "success": 374,
-      "last": 1710148418338,
+      "last": 1710148692674,
       "lastSuccess": 1710148418338
     },
     "owner-accs.js": {

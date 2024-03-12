@@ -6,7 +6,7 @@ const handler = async (m, {conn, text, usedPrefix, command}) => {
   conn.reply('212658323376@s.whatsapp.net', m.quoted ? teks + m.quoted.text : teks, null, {contextInfo: {mentionedJid: [m.sender]}});
   m.reply(`تم ارسال تقرير لفريق البوت سيتم رد عليك في اقرب وقت`);
 };
-handler.help = ['reporte', 'request'].map((v) => v + ' <teks>');
+handler.help = ['report']
 handler.tags = ['info'];
-handler.command = /^(report|تقرير)$/i;
+handler.command = /^(report)$/i;
 export default handler;

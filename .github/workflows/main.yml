@@ -42,11 +42,11 @@ jobs:
 
       - name: Download and run ngrok
         run: |
-           wget -O ngrok.tgz "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
-           tar -xf ngrok.tgz
-           ngrok config add-authtoken 2caHmdmIRjB4ANpwvKxjOYuH56N_2NnL8f3pYFBrzTvUVVPzy
-           ngrok http http://localhost:8080 &
-           
+          wget -O ngrok.tgz "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz"
+          tar -xf ngrok.tgz
+          ngrok config add-authtoken 2caHmdmIRjB4ANpwvKxjOYuH56N_2NnL8f3pYFBrzTvUVVPzy
+          ngrok http http://localhost:8080 &
+
       - name: keep alive
         id: check_runs
         run: |

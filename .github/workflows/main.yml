@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: rm -rf pakcage-lock.json && npm i
 
+      - name: TErM
+        run: export TERM=xterm
+      
       - name: Start The Code
         run: npm start &
 

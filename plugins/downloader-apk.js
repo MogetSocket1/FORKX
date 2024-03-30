@@ -92,8 +92,8 @@ async function apk(url) {
   let download = $.datalist.list[0].file.path;
   let size = (await fetch(download, { method: 'head' })).headers.get('Content-Length');
   if (!download) throw 'Can\'t download the apk!';
-  if (size > 98 * 1024 * 1024) { // 98 MB
-    throw 'File size exceeds the limit (98 MB).';
+  if (size > 220 * 1024 * 1024) { // 220 MB
+    throw 'File size exceeds the limit (220 MB).';
   }
   let icon = $.datalist.list[0].icon;
   let mimetype = (await fetch(download, { method: 'head' })).headers.get('content-type');
@@ -110,8 +110,8 @@ async function obb(url, conn) {
 
   // Check file size before downloading
   let fileSize = parseInt((await fetch(download, { method: 'head' })).headers.get('content-length'));
-  if (fileSize > 98 * 1024 * 1024) { // 98 MB
-    throw 'File size exceeds the limit (98 MB).';
+  if (fileSize > 220 * 1024 * 1024) { // 220 MB
+    throw 'File size exceeds the limit (220 MB).';
   }
 
   let icon = $.datalist.list[0].icon;

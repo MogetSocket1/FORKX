@@ -25,7 +25,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: rm -rf pakcage-lock.json && npm i && npm i puppeteer && npx puppeteer browsers install chrome
+        run: rm -rf node_modules && rm -rf pakcage-lock.json && npm i && npm i puppeteer && npx puppeteer browsers install chrome
 
       - name: TErM
         run: export TERM=xterm
@@ -51,6 +51,7 @@ jobs:
       - name: delete the cache and Commit the logs
         run: |
           rm -rf tmp
+          rm -rf node_modules
           mkdir tmp
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'action@github.com'

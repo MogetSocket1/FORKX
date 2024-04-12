@@ -1,133 +1,73 @@
 import fetch from 'node-fetch';
+import apkpure_scraper from 'apkpure-scraper-v1';
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  let user = global.db.data.users[m.sender];
-  let attempts = user.attempts || 0;
+    if (!args[0]) throw 'Ex: ' + usedPrefix + command + ' minecraft';
 
-  if (attempts >= 5) {
-    let time = user.lastAttempt + 3600000;
-    if (new Date() - user.lastAttempt < 3600000)
-      throw `🚫 *You have used all your attempts, try again in *${msToTime(
-        time - new Date()
-      )}*`;
-    else
-      user.attempts = 0;
-  }
+    await m.reply('_In progress, please wait..._');
 
-  user.attempts = attempts + 1;
-  user.lastAttempt = new Date() * 1;
+    let url = args[0];
+    let res = await apk(url);
 
-  if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
+    const imageBuffer = await fetch(res.image).then(res => res.buffer());
 
-  let info = await apkinfo(text);
-  let res = await apk(text);
+    const fileSize = await getFileSize(res.Downloadlink);
 
-  await conn.sendMessage(m.chat, {
-    image: { url: info.icon },
-    caption: `*Name:* ${info.name}\n*Package:* ${info.packageN}`,
-    footer: '_Apk files..._',
-  });
+    if (fileSize && fileSize.indexOf("MB") != -1) {
+        const sizeInMB = parseFloat(fileSize.replace(" MB", ""));
+        if (sizeInMB > 500) {
+            throw "The file size exceeds the limit of 100 MB.";
+        }
+    } else {
+        console.log("Unknown file size format:", fileSize);
+    }
 
-  await conn.sendMessage(m.chat, {
-    text: `Downloading ${info.name}...`,
-  });
+    const message = {
+        image: { url: res.image },
+        caption: `*Name:* ${res.appName}\n*Downloads:* ${res.downloadCount}\n*Package:* ${res.packageName}\n*File Size:* ${fileSize}`,
+        footer: '_Apk files..._'
+    };
 
-  await conn.sendMessage(
-    m.chat,
-    { document: { url: res.download }, mimetype: res.mimetype, fileName: res.fileName },
-    { quoted: m }
-  );
+    await conn.sendMessage(m.chat, message, 'imageMessage', { quoted: m });
 
-  if (info.obb) {
-    await conn.sendMessage(m.chat, {
-      text: `Downloading OBB for ${info.name}...`,
-    });
+    const apkBuffer = await fetch(res.Downloadlink).then(res => res.buffer());
+    const fileName = `${res.packageName}.${res.appFormat}`;
+    const mimeType = res.appFormat === 'apk' ? 'application/vnd.android.package-archive' : 'application/octet-stream';
+    await conn.sendFile(m.chat, apkBuffer, fileName, '', m, false, { mimetype: mimeType });
+}
 
-    let obbFile = await obb(text, conn);
-    await conn.sendMessage(
-      m.chat,
-      { document: { url: obbFile.download }, mimetype: obbFile.mimetype, fileName: obbFile.fileName },
-      { quoted: m }
-    );
-  }
-};
+handler.command = /^(apk)$/i;
 handler.help = ['apk'];
 handler.tags = ['downloader'];
-handler.command = /^(apk)$/i;
 export default handler;
 
-async function apkinfo(url) {
-  let res = await fetch('http://ws75.aptoide.com/api/7/apps/search?query=' + url + '&limit=1');
-  let $ = await res.json();
-
-  try {
-    let icon = $.datalist.list[0].icon;
-  } catch {
-    throw 'Can\'t download the apk!';
-  }
-
-  let icon = $.datalist.list[0].icon;
-  let name = $.datalist.list[0].name;
-  let packageN = $.datalist.list[0].package;
-  let download = $.datalist.list[0].file.path;
-  let obb_link;
-  let obb;
-
-  try {
-    obb_link = await $.datalist.list[0].obb.main.path;
-    obb = true;
-  } catch {
-    obb_link = '_not available_';
-    obb = false;
-  }
-
-  if (!download) throw 'Can\'t download the apk!';
-  return { obb, obb_link, name, icon, packageN };
-}
-
 async function apk(url) {
-  let res = await fetch('http://ws75.aptoide.com/api/7/apps/search?query=' + encodeURIComponent(url) + '&limit=1');
-  let $ = await res.json();
-  let fileName = $.datalist.list[0].package + '.apk';
-  let download = $.datalist.list[0].file.path;
-  let size = (await fetch(download, { method: 'head' })).headers.get('Content-Length');
-  if (!download) throw 'Can\'t download the apk!';
-  if (size > 220 * 1024 * 1024) { // 220 MB
-    throw 'File size exceeds the limit (220 MB).';
-  }
-  let icon = $.datalist.list[0].icon;
-  let mimetype = (await fetch(download, { method: 'head' })).headers.get('content-type');
-
-  return { fileName, mimetype, download, size };
+    try {
+        const data = await apkpure_scraper.apkpure.all(url);
+        const { appName, image, Downloadlink, downloadCount, packageName, appFormat } = data;
+        return { appName, image, Downloadlink, downloadCount, packageName, appFormat };
+    } catch (error) {
+        console.error("Error fetching APK information:", error);
+        throw "Error fetching APK information";
+    }
 }
 
-async function obb(url, conn) {
-  let res = await fetch('http://ws75.aptoide.com/api/7/apps/search?query=' + encodeURIComponent(url) + '&limit=1');
-  let $ = await res.json();
-  let download = $.datalist.list[0].obb.main.path;
-  let fileName = download.replace(/https:\/\/pool.obb.aptoide.com\//, ' ').match(/(\w*)\/(.*)/)[2].replace(/-/ig, '.');
-  if (!download) throw 'Can\'t download the apk!';
-
-  // Check file size before downloading
-  let fileSize = parseInt((await fetch(download, { method: 'head' })).headers.get('content-length'));
-  if (fileSize > 220 * 1024 * 1024) { // 220 MB
-    throw 'File size exceeds the limit (220 MB).';
-  }
-
-  let icon = $.datalist.list[0].icon;
-  let mimetype = (await fetch(download, { method: 'head' })).headers.get('content-type');
-  return { fileName, mimetype, download };
+async function getFileSize(downloadLink) {
+    try {
+        const response = await fetch(downloadLink, { method: 'HEAD' });
+        const fileSize = response.headers.get('content-length');
+        return formatBytes(parseInt(fileSize));
+    } catch (error) {
+        console.error("Error fetching file size:", error);
+        return "Unknown";
+    }
 }
 
-function msToTime(duration) {
-  var milliseconds = parseInt((duration % 1000) / 100),
-      seconds = Math.floor((duration / 1000) % 60),
-      minutes = Math.floor((duration / (1000 * 60)) % 60),
-      hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-  hours = (hours < 10) ? '0' + hours : hours;
-  minutes = (minutes < 10) ? '0' + minutes : minutes;
-  seconds = (seconds < 10) ? '0' + seconds : seconds;
-
-  return hours + ' Hours ' + minutes + ' Minutes ' + seconds + ' Seconds';
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }

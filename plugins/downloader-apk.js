@@ -1,46 +1,24 @@
 import fetch from 'node-fetch';
-import apkpure_scraper from 'apkpure-scraper-v1';
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-    if (!args[0]) throw 'Ex: ' + usedPrefix + command + ' minecraft';
+    if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
 
     await m.reply('_In progress, please wait..._');
 
-    let res = await apk(args[0]);
+    let res = await apk(text);
     
-    if(!res.Downloadlink) throw 'Can\'t download the apk!';
-
-    const imageBuffer = await fetch(res.image).then(res => res.buffer());
-
-    const fileSize = await getFileSize(res.Downloadlink);
-
-    if (fileSize && fileSize.indexOf("MB") != -1) {
-        const sizeInMB = parseFloat(fileSize.replace(" MB", ""));
-        if (sizeInMB > 500) {
-            throw "حجم الملف يتجاوز الحد المسموح به، يجب أن يكون أقل من 500 ميغابايت.";
-        }
-    } else if (fileSize && fileSize.indexOf("GB") != -1) {
-        const sizeInGB = parseFloat(fileSize.replace(" GB", ""));
-        if (sizeInGB > 0.5) {
-            throw "حجم الملف يتجاوز الحد المسموح به، يجب أن يكون أقل من 500 ميغابايت.";
-        }
-    } else {
-        console.log("تنسيق غير معروف لحجم الملف:", fileSize);
-    }
-
-    const message = {
-        image: { url: res.image },
-        caption: `*Name:* ${res.appName}\n*Downloads:* ${res.downloadCount}\n*Package:* ${res.packageName}\n*File Size:* ${fileSize}`,
-        footer: '_Apk files..._'
-    };
-
-    await conn.sendMessage(m.chat, message, 'imageMessage', { quoted: m });
+    await conn.sendMessage(m.chat, {
+    image: { url: res.icon },
+    caption: `*Name:* ${res.name}\n*Downloads:* ${res.dc}\n*Package:* ${res.path}\n*File Size:* ${res.size}`,
+    footer: '_Apk files..._',
+  });
     
-
-    const apkBuffer = await fetch(res.Downloadlink).then(res => res.buffer());
-    const fileName = `${res.packageName}.${res.appFormat}`;
-    const mimeType = res.appFormat === 'apk' ? 'application/vnd.android.package-archive' : 'application/octet-stream';
-    await conn.sendFile(m.chat, apkBuffer, fileName, '', m, false, { mimetype: mimeType });
+    const fileName = `${res.path}.${res.format}`;
+    await conn.sendMessage(
+    m.chat,
+    { document: { url: res.dl }, mimetype: res.mimetype, fileName: fileName },
+    { quoted: m }
+  );
 }
 
 handler.command = /^(apk)$/i;
@@ -48,26 +26,23 @@ handler.help = ['apk'];
 handler.tags = ['downloader'];
 export default handler;
 
-async function apk(url) {
-    try {
-        const data = await apkpure_scraper.apkpure.all(url);
-        const { appName, image, Downloadlink, downloadCount, packageName, appFormat } = data;
-        return { appName, image, Downloadlink, downloadCount, packageName, appFormat };
-    } catch (error) {
-        console.error("Error fetching APK information:", error);
-        throw "Error fetching APK information";
-    }
-}
-
-async function getFileSize(downloadLink) {
-    try {
-        const response = await fetch(downloadLink, { method: 'HEAD' });
-        const fileSize = response.headers.get('content-length');
-        return formatBytes(parseInt(fileSize));
-    } catch (error) {
-        console.error("Error fetching file size:", error);
-        return "Unknown";
-    }
+async function apk(text) {
+  let response = await fetch(`https://energetic-charm-mastodon.glitch.me/search?q=${text}`);
+  let $ = await response.json();
+  let name = $.appName;
+  let icon = $.image;
+  let dl = $.Downloadlink;
+  let format = $.appFormat;
+  if(!dl) throw 'Can\'t download the apk!';
+  let dc = $.downloadCount;
+  let path = $.packageName;
+  let mimetype = (await fetch(dl, { method: 'head' })).headers.get('content-type');
+  const getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
+  if (getsize > 500000000) {
+  throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
+  }
+  let size = formatBytes(parseInt(getsize));
+  return { name, icon, dl, dc, path, format, size, mimetype}
 }
 
 function formatBytes(bytes, decimals = 2) {

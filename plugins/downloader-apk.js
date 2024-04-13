@@ -6,8 +6,9 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
     await m.reply('_In progress, please wait..._');
 
-    let url = args[0];
-    let res = await apk(url);
+    let res = await apk(args[0]);
+    
+    if(!res.Downloadlink) throw 'Can\'t download the apk!';
 
     const imageBuffer = await fetch(res.image).then(res => res.buffer());
 
@@ -16,10 +17,15 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (fileSize && fileSize.indexOf("MB") != -1) {
         const sizeInMB = parseFloat(fileSize.replace(" MB", ""));
         if (sizeInMB > 500) {
-            throw "The file size exceeds the limit of 100 MB.";
+            throw "حجم الملف يتجاوز الحد المسموح به، يجب أن يكون أقل من 500 ميغابايت.";
+        }
+    } else if (fileSize && fileSize.indexOf("GB") != -1) {
+        const sizeInGB = parseFloat(fileSize.replace(" GB", ""));
+        if (sizeInGB > 0.5) {
+            throw "حجم الملف يتجاوز الحد المسموح به، يجب أن يكون أقل من 500 ميغابايت.";
         }
     } else {
-        console.log("Unknown file size format:", fileSize);
+        console.log("تنسيق غير معروف لحجم الملف:", fileSize);
     }
 
     const message = {
@@ -29,6 +35,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     };
 
     await conn.sendMessage(m.chat, message, 'imageMessage', { quoted: m });
+    
 
     const apkBuffer = await fetch(res.Downloadlink).then(res => res.buffer());
     const fileName = `${res.packageName}.${res.appFormat}`;

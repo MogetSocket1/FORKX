@@ -1,5 +1,10 @@
 import fetch from 'node-fetch';
 
+let headers = {
+  'Authorization': 'Bearer 2dBngDCuol3jybcGwZZEsy2NT1d_G87xJgwMY6DTWycNLCz2',
+  'Ngrok-Version': '2'
+};
+
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
 
@@ -13,7 +18,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     footer: '_Apk files..._',
   });
     
-    const fileName = `${res.path}.${res.format}`;
+    let fileName = `${res.path}.${res.format}`;
     await conn.sendMessage(
     m.chat,
     { document: { url: res.dl }, mimetype: res.mimetype, fileName: fileName },
@@ -27,7 +32,13 @@ handler.tags = ['downloader'];
 export default handler;
 
 async function apk(text) {
-  let response = await fetch(`https://energetic-charm-mastodon.glitch.me/search?q=${text}`);
+  let res = await fetch('https://api.ngrok.com/endpoints', { headers });
+  let apiData = await res.json();
+  if (!apiData.endpoints || !Array.isArray(apiData.endpoints) || apiData.endpoints.length === 0) {
+    throw 'Unable to fetch Ngrok endpoints.';
+  }
+  let api = apiData.endpoints[0].public_url;
+  let response = await fetch(`${api}/search?q=${text}`);
   let $ = await response.json();
   let name = $.appName;
   let icon = $.image;
@@ -37,19 +48,20 @@ async function apk(text) {
   let dc = $.downloadCount;
   let path = $.packageName;
   let mimetype = (await fetch(dl, { method: 'head' })).headers.get('content-type');
-  const getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
+  let getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
   if (getsize > 500000000) {
-  throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
+    throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
   }
   let size = formatBytes(parseInt(getsize));
   return { name, icon, dl, dc, path, format, size, mimetype}
 }
 
+
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    let k = 1024;
+    let dm = decimals < 0 ? 0 : decimals;
+    let sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    let i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }

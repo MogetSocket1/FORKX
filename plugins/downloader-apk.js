@@ -33,12 +33,19 @@ export default handler;
 
 async function apk(text) {
   let res = await fetch('https://api.ngrok.com/endpoints', { headers });
-  let apiData = await res.json();
-  if (!apiData.endpoints || !Array.isArray(apiData.endpoints) || apiData.endpoints.length === 0) {
-    throw 'Unable to fetch Ngrok endpoints.';
-  }
-  let api = apiData.endpoints[0].public_url;
-  let response = await fetch(`${api}/search?q=${text}`);
+let apiData = await res.json();
+if (!apiData.endpoints || !Array.isArray(apiData.endpoints) || apiData.endpoints.length === 0) {
+  throw 'Unable to fetch Ngrok endpoints.';
+}
+
+let filteredEndpoints = apiData.endpoints.filter(endpoint => endpoint.public_url.startsWith("https://") || endpoint.public_url.startsWith("http://"));
+if(filteredEndpoints.length === 0) {
+  throw 'An issue occurred with the apk, please try again later';
+}
+
+let apiUrls = filteredEndpoints.map(endpoint => endpoint.public_url);
+
+  let response = await fetch(`${apiUrls}/search?q=${text}`);
   let $ = await response.json();
   let name = $.appName;
   let icon = $.image;
@@ -55,6 +62,7 @@ async function apk(text) {
   let size = formatBytes(parseInt(getsize));
   return { name, icon, dl, dc, path, format, size, mimetype}
 }
+
 
 
 function formatBytes(bytes, decimals = 2) {

@@ -1,10 +1,5 @@
 import fetch from 'node-fetch';
 
-let headers = {
-  'Authorization': 'Bearer 2dBngDCuol3jybcGwZZEsy2NT1d_G87xJgwMY6DTWycNLCz2',
-  'Ngrok-Version': '2'
-};
-
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
 
@@ -18,7 +13,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     footer: '_Apk files..._',
   });
     
-    let fileName = `${res.path}.${res.format}`;
+    const fileName = `${res.path}.${res.format}`;
     await conn.sendMessage(
     m.chat,
     { document: { url: res.dl }, mimetype: res.mimetype, fileName: fileName },
@@ -32,20 +27,7 @@ handler.tags = ['downloader'];
 export default handler;
 
 async function apk(text) {
-  let res = await fetch('https://api.ngrok.com/endpoints', { headers });
-let apiData = await res.json();
-if (!apiData.endpoints || !Array.isArray(apiData.endpoints) || apiData.endpoints.length === 0) {
-  throw 'Unable to fetch Ngrok endpoints.';
-}
-
-let filteredEndpoints = apiData.endpoints.filter(endpoint => endpoint.public_url.startsWith("https://") || endpoint.public_url.startsWith("http://"));
-if(filteredEndpoints.length === 0) {
-  throw 'An issue occurred with the apk, please try again later';
-}
-
-let apiUrls = filteredEndpoints.map(endpoint => endpoint.public_url);
-
-  let response = await fetch(`${apiUrls}/search?q=${text}`);
+  let response = await fetch(`https://energetic-charm-mastodon.glitch.me/search?q=${text}`);
   let $ = await response.json();
   let name = $.appName;
   let icon = $.image;
@@ -55,21 +37,19 @@ let apiUrls = filteredEndpoints.map(endpoint => endpoint.public_url);
   let dc = $.downloadCount;
   let path = $.packageName;
   let mimetype = (await fetch(dl, { method: 'head' })).headers.get('content-type');
-  let getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
+  const getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
   if (getsize > 500000000) {
-    throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
+  throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
   }
   let size = formatBytes(parseInt(getsize));
   return { name, icon, dl, dc, path, format, size, mimetype}
 }
 
-
-
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
-    let k = 1024;
-    let dm = decimals < 0 ? 0 : decimals;
-    let sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    let i = Math.floor(Math.log(bytes) / Math.log(k));
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }

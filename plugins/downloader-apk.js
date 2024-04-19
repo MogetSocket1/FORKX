@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
-
-    await m.reply('_In progress, please wait..._');
+    try {
+    await m.reply('*LOADING…*');
 
     let res = await apk(text);
     
@@ -13,12 +13,17 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     footer: '_Apk files..._',
   });
     
+    await m.reply(`UPLOADING : *${res.name}*`);
+    
     const fileName = `${res.path}.${res.format}`;
     await conn.sendMessage(
     m.chat,
     { document: { url: res.dl }, mimetype: res.mimetype, fileName: fileName },
     { quoted: m }
   );
+    } catch (error) {
+    await m.reply(`هناك ضغط على الموقع يرجى اعادة المحاولة لاحقا`);
+    }
 }
 
 handler.command = /^(apk)$/i;

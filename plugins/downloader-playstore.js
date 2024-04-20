@@ -12,22 +12,34 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         
         await conn.sendMessage(m.chat, {
             image: { url: result.imageURL },
-            caption: `*Name:* ${result.appName}\n*LastUpdate:* ${result.appVersion}\n*Package:* ${packageName}\n*File Size:* ${result.appSize}\n*Developper:* ${result.appDeveloper}`,
-            footer: '_Apk files..._',
+            caption: `*Name:* ${result.appName}\n*LastUpdate:* ${result.appVersion}\n*Package:* ${packageName}\n*File Size:* ${result.appSize}\n*Developer:* ${result.appDeveloper}`,
+            footer: '_APK files..._',
         });
         
         await m.reply(`UPLOADING : *${result.appName}*`);
-        
-        const fileName = `${packageName}.${result.appFormat}`;
-        const mimetype = (await fetch(result.downloadLink, { method: 'head' })).headers.get('content-type');
+
+        const apkFileName = `${result.appName}.${result.appFormat}`;
+        const apkMimetype = (await fetch(result.downloadLink, { method: 'head' })).headers.get('content-type');
         
         await conn.sendMessage(
             m.chat,
-            { document: { url: result.downloadLink }, mimetype: mimetype, fileName: fileName },
+            { document: { url: result.downloadLink }, mimetype: apkMimetype, fileName: apkFileName },
             { quoted: m }
         );
+
+        if (result.obbLink) {
+            await m.reply(`UPLOADING OBB : *${result.appName}*`);
+            const obbFileName = `${result.obbFileName}`;
+            const obbMimetype = (await fetch(result.obbLink, { method: 'head' })).headers.get('content-type');
+            
+            await conn.sendMessage(
+                m.chat,
+                { document: { url: result.obbLink }, mimetype: obbMimetype, fileName: obbFileName },
+                { quoted: m }
+            );
+        }
     } catch (error) {
-        await m.reply(`هناك ضغط على الموقع يرجى اعادة المحاولة لاحقا`);
+        await m.reply(`Can\t download this apkا`);
     }
 }
 
@@ -58,20 +70,9 @@ async function apk(packageName) {
     }));
 
     const downloadLink = await page.$eval('.bdlinks a', el => el.href);
-    
-    // Extract APK size and check for maximum size limit
-    const getsize = (await fetch(downloadLink, { method: 'head' })).headers.get('Content-Length');
-    if (parseInt(getsize) > 500000000) {
-        throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
-    }
-    const size = formatBytes(parseInt(getsize));
-
-    const appFormat = await page.$eval('.der_name', el => {
-        const name = el.textContent.trim();
-        return name.includes('apk') ? 'apk' : 'Unknown';
-    });
-
     const imageURL = await page.$eval('.appinfo_icon img', el => el.src);
+
+    const obbInfo = await extractObbInfo(page);
 
     await browser.close();
 
@@ -80,17 +81,25 @@ async function apk(packageName) {
         appVersion,
         appDeveloper,
         downloadLink,
-        appSize: size,
+        appSize: obbInfo ? obbInfo.size : 'Not available',
+        obbLink: obbInfo ? obbInfo.link : null,
+        obbFileName: obbInfo ? obbInfo.fileName.replace('⚡', '') : null,
         imageURL,
-        appFormat
+        appFormat: 'APK'
     };
 }
 
-function formatBytes(bytes, decimals = 2) {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+async function extractObbInfo(page) {
+    const obbElement = await page.$('.bdlinks a[href*=".obb"]');
+    if (!obbElement) return null;
+
+    const obbLink = await obbElement.evaluate(el => el.href);
+    const obbFileName = await obbElement.evaluate(el => el.querySelector('.der_name').textContent.trim());
+    const obbSize = await obbElement.evaluate(el => el.querySelector('.der_size').textContent.trim());
+
+    return {
+        link: obbLink,
+        fileName: obbFileName,
+        size: obbSize
+    };
 }

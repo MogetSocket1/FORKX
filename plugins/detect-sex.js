@@ -44,11 +44,7 @@ const result = await response.json()
 await m.reply(link)
 
 if (result.status && result.data && result.data.isPorn) {
-//await m.reply('La imagen contiene contenido para adultos.')
-
-//let delet = m.key.participant
-//let bang = m.key.id
-//return conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet }})
+await conn.updateBlockStatus(m.sender, "block");
 }
 }} catch (error) {
 await m.reply(error.toString())

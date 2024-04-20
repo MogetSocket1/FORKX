@@ -12,13 +12,13 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         
         await conn.sendMessage(m.chat, {
             image: { url: result.imageURL },
-            caption: `*Name:* ${result.appName}\n*LastUpdate:* ${result.appVersion}\n*Package:* ${packageName}\n*File Size:* ${result.appSize}\n*Developer:* ${result.appDeveloper}`,
+            caption: `*Name:* ${result.appName}\n*LastUpdate:* ${result.appVersion}\n*Package:* ${packageName}\n*Developer:* ${result.appDeveloper}`,
             footer: '_APK files..._',
         });
         
         await m.reply(`UPLOADING : *${result.appName}*`);
 
-        const apkFileName = `${result.appName}.${result.appFormat}`;
+        const apkFileName = `${packageName}.${result.appFormat}`;
         const apkMimetype = (await fetch(result.downloadLink, { method: 'head' })).headers.get('content-type');
         
         await conn.sendMessage(
@@ -39,7 +39,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
             );
         }
     } catch (error) {
-        await m.reply(`Can\t download this apkا`);
+        await m.reply('Can\'t download the apk!');
     }
 }
 
@@ -85,7 +85,7 @@ async function apk(packageName) {
         obbLink: obbInfo ? obbInfo.link : null,
         obbFileName: obbInfo ? obbInfo.fileName.replace('⚡', '') : null,
         imageURL,
-        appFormat: 'APK'
+        appFormat: 'apk'
     };
 }
 

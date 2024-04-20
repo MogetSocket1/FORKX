@@ -41,7 +41,6 @@ link = await uploadImage(buffer)
 if (link) {
 const response = await fetch(`https://api.alyachan.dev/api/porn-detector?image=${link}&apikey=GataDios`)
 const result = await response.json()
-await m.reply(link)
 
 if (result.status && result.data && result.data.isPorn) {
 await conn.updateBlockStatus(m.sender, "block");

@@ -27,7 +27,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: rm -rf pakcage-lock.json && npm i && npx puppeteer browsers install chrome
+        run: rm -rf pakcage-lock.json && npm i && npx puppeteer browsers install chrome && $ npm install apkpure-scraper-v1 &
 
       - name: TErM
         run: export TERM=xterm

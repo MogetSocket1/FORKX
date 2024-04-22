@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         
         await conn.sendMessage(m.chat, {
             image: { url: result.imageURL },
-            caption: `*Name:* ${result.appName}\n*LastUpdate:* ${result.appVersion}\n*SizeApp:* ${result.sizeapk}\n*Package:* ${packageName}\n*Developer:* ${result.appDeveloper}`,
+            caption: `*Name:* ${result.appName}\n*LastUpdate:* ${result.appVersion}\n*Package:* ${packageName}\n*Developer:* ${result.appDeveloper}`,
             footer: '_APK files..._',
         });
         
@@ -31,9 +31,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
             await m.reply(`UPLOADING OBB : *${result.appName}*`);
             const obbFileName = `${result.obbFileName}`;
             const obbMimetype = (await fetch(result.obbLink, { method: 'head' })).headers.get('content-type');
-            if (result.obbLink > 500000000) {
-  throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
-  }
+            
             await conn.sendMessage(
                 m.chat,
                 { document: { url: result.obbLink }, mimetype: obbMimetype, fileName: obbFileName },
@@ -73,14 +71,8 @@ async function apk(packageName) {
 
     const downloadLink = await page.$eval('.bdlinks a', el => el.href);
     const imageURL = await page.$eval('.appinfo_icon img', el => el.src);
-    
-    let size = (await fetch(downloadLink, { method: 'head' })).headers.get('Content-Length');
-    let sizeapk = formatBytes(parseInt(size));
 
     const obbInfo = await extractObbInfo(page);
-    
-    let sizeobb = formatBytes(parseInt(obbInfo.size));
-    
 
     await browser.close();
 
@@ -89,7 +81,6 @@ async function apk(packageName) {
         appVersion,
         appDeveloper,
         downloadLink,
-        sizeapk,
         appSize: obbInfo ? obbInfo.size : 'Not available',
         obbLink: obbInfo ? obbInfo.link : null,
         obbFileName: obbInfo ? obbInfo.fileName.replace('⚡', '') : null,
@@ -111,12 +102,4 @@ async function extractObbInfo(page) {
         fileName: obbFileName,
         size: obbSize
     };
-}
-function formatBytes(bytes, decimals = 2) {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }

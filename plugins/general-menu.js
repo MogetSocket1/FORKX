@@ -10,9 +10,9 @@ let tags = {
 }
 const defaultMenu = {
   before: 'Hi, %name 👋\n\n> Date: %date\n> Time: %time WIB\n> Runtime: %uptime\n%readmore',
-  header: '*%category*',
-  body: '• %cmd %islimit %isPremium',
-  footer: '',
+  header: '┏━━⊜ *_%category_* ━⊜',
+  body: '┃⋄ %cmd %islimit %isPremium',
+  footer: '┗━━━━━━━━🥀\n',
   after: '',
 
 }

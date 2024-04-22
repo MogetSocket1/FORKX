@@ -31,7 +31,7 @@ jobs:
         run: export TERM=xterm
       
       - name: Start The Code
-        run: npm start &
+        run: node index.js &
 
       - name: keep alive
         id: check_runs

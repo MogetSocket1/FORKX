@@ -1,4 +1,4 @@
-import apkpure_scraper from 'apkpure-v1';
+import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
@@ -32,8 +32,7 @@ handler.tags = ['downloader'];
 export default handler;
 
 async function apk(text) {
-  let response = await apkpure_scraper.apkpure.all(text);
-  await apkpure_scraper.apkpure.all(url);
+  let response = await fetch(`https://energetic-charm-mastodon.glitch.me/search?q=${text}`);
   let $ = await response.json();
   let name = $.appName;
   let icon = $.image;

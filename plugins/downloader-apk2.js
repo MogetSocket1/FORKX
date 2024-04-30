@@ -1,30 +1,30 @@
+import fetch from 'node-fetch';
+
+import pkg from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto, prepareWAMessageMedia } = pkg;
+
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-    // Replace res with your actual variable holding the app information
-    let res = {
-        name: "App Name",
-        dc: "1000",
-        path: "com.example.app",
-        size: "10MB"
-    };
-
+    if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
+    try {
+    await m.reply('*LOADING…*');
+    
+    
+    let res = await apk(text);
+    
     let appInfoMessage = `*Name:* ${res.name}\n*Downloads:* ${res.dc}\n*Package:* ${res.path}\n*File Size:* ${res.size}`;
-    let img = "https://image.winudf.com/v2/image1/Y29tLmZhY2Vib29rLmxpdGVfaWNvbl8xNjk1NjAyMTk2XzAwNQ/icon.png?w=160&fakeurl=1";
-
-    // استعد الصورة للإرسال
-    let media = await prepareWAMessageMedia({ image: { url: img, fileLength: 1000000000000 } }, { upload: conn.waUploadToServer });
-
+    
     const interactiveMessage = {
         body: { text: appInfoMessage },
         footer: { text: "" },
-        header: { title: "Hello world", subtitle: "", hasMediaAttachment: true }, // تم تغيير القيمة إلى true
+        header: {
+        hasMediaAttachment: true,...(await prepareWAMessageMedia({ image: { url: res.icon } }, { upload: conn.waUploadToServer }))
+        },
         nativeFlowMessage: { 
             buttons: [{ 
                 name: "quick_reply",
-                buttonParamsJson: "{\"display_text\":\"Pemilik bot\",\"id\":\".owner\"}"
+                buttonParamsJson: "{\"display_text\":\"Download\",\"id\":\".doapk\"}"
             }]
-        },
-        // إضافة الوسائط المرئية
-        media
+        }
     };
 
     const message = { 
@@ -33,7 +33,41 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     };
 
     await conn.relayMessage(m.chat, { viewOnceMessage: { message } }, {});
-};
+    
+    } catch (error) {
+    await m.reply(`هناك ضغط على الموقع يرجى اعادة المحاولة لاحقا`);
+    }
+}
 
 handler.command = /^(hipo)$/i;
+handler.help = ['apk'];
+handler.tags = ['downloader'];
 export default handler;
+
+async function apk(text) {
+  let response = await fetch(`https://energetic-charm-mastodon.glitch.me/search?q=${text}`);
+  let $ = await response.json();
+  let name = $.appName;
+  let icon = $.image;
+  let dl = $.Downloadlink;
+  let format = $.appFormat;
+  if(!dl) throw 'Can\'t download the apk!';
+  let dc = $.downloadCount;
+  let path = $.packageName;
+  let mimetype = (await fetch(dl, { method: 'head' })).headers.get('content-type');
+  const getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
+  if (getsize > 500000000) {
+  throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
+  }
+  let size = formatBytes(parseInt(getsize));
+  return { name, icon, dl, dc, path, format, size, mimetype}
+}
+
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}

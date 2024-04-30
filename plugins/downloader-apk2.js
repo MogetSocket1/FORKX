@@ -13,6 +13,13 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     
     let appInfoMessage = `*Name:* ${res.name}\n*Downloads:* ${res.dc}\n*Package:* ${res.path}\n*File Size:* ${res.size}`;
     
+    /*const downlinkInfo = {
+    dl: res.dl,
+    path: `${res.path}.${res.format}`,
+    mimetype: res.mimetype
+    };
+
+    const downlinkJSON = JSON.stringify(downlinkInfo);*/
     const interactiveMessage = {
         body: { text: appInfoMessage },
         footer: { text: "" },
@@ -22,7 +29,7 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
         nativeFlowMessage: { 
             buttons: [{ 
                 name: "quick_reply",
-                buttonParamsJson: "{\"display_text\":\"Download\",\"id\":\".doapk\"}"
+                buttonParamsJson: `{"display_text":"Download","id":".doapk ${res.name}"}`
             }]
         }
     };

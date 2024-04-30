@@ -1,26 +1,46 @@
 import fetch from 'node-fetch';
 
+import pkg from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto, prepareWAMessageMedia } = pkg;
+
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     if (!text) throw 'Ex: ' + usedPrefix + command + ' minecraft';
     try {
     await m.reply('*LOADING…*');
-
+    
+    
     let res = await apk(text);
     
-    await conn.sendMessage(m.chat, {
-    image: { url: res.icon },
-    caption: `*Name:* ${res.name}\n*Downloads:* ${res.dc}\n*Package:* ${res.path}\n*File Size:* ${res.size}`,
-    footer: '_Apk files..._',
-  });
+    let appInfoMessage = `*Name:* ${res.name}\n*Downloads:* ${res.dc}\n*Package:* ${res.path}\n*File Size:* ${res.size}`;
     
-    await m.reply(`UPLOADING : *${res.name}*`);
+    /*const downlinkInfo = {
+    dl: res.dl,
+    path: `${res.path}.${res.format}`,
+    mimetype: res.mimetype
+    };
+
+    const downlinkJSON = JSON.stringify(downlinkInfo);*/
+    const interactiveMessage = {
+        body: { text: appInfoMessage },
+        footer: { text: "" },
+        header: {
+        hasMediaAttachment: true,...(await prepareWAMessageMedia({ image: { url: res.icon } }, { upload: conn.waUploadToServer }))
+        },
+        nativeFlowMessage: { 
+            buttons: [{ 
+                name: "quick_reply",
+                buttonParamsJson: `{"display_text":"Download","id":".doapk ${res.name}"}`
+            }]
+        }
+    };
+
+    const message = { 
+        messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 }, 
+        interactiveMessage 
+    };
+
+    await conn.relayMessage(m.chat, { viewOnceMessage: { message } }, {});
     
-    const fileName = `${res.path}.${res.format}`;
-    await conn.sendMessage(
-    m.chat,
-    { document: { url: res.dl }, mimetype: res.mimetype, fileName: fileName },
-    { quoted: m }
-  );
     } catch (error) {
     await m.reply(`هناك ضغط على الموقع يرجى اعادة المحاولة لاحقا`);
     }
@@ -43,7 +63,7 @@ async function apk(text) {
   let path = $.packageName;
   let mimetype = (await fetch(dl, { method: 'head' })).headers.get('content-type');
   const getsize = (await fetch(dl, { method: 'head' })).headers.get('Content-Length');
-  if (getsize > 500000000) {
+  if (getsize > 690000000) {
   throw 'حجم ملف apk كبير جدًا. الحد الأقصى لحجم التنزيل هو 500 ميغابايت.';
   }
   let size = formatBytes(parseInt(getsize));

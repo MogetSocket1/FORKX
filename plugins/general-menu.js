@@ -1,11 +1,11 @@
-//import db from '../lib/database.js'
 import { promises } from 'fs'
 import { join } from 'path'
 import jimp from 'jimp'
 import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
-//import { plugins } from '../lib/plugins.js'
+import pkg from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto, prepareWAMessageMedia } = pkg;
 let tags = {
 }
 const defaultMenu = {
@@ -90,8 +90,37 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
     //let buffer = await genProfile(conn, m)
-    const pp = await conn.profilePictureUrl(conn.user.jid, 'image').catch(_ => './src/avatar_contact.png')
-    conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m, null)
+    const pp = await conn.profilePictureUrl(conn.user.jid, 'image').catch(_ => './src/avatar_contact.png');
+    //conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m, null)
+    const interactiveMessage = {
+        body: { text: text.trim() },
+        footer: { text: "_By Alyamani_" },
+        header: {
+        hasMediaAttachment: true,...(await prepareWAMessageMedia({ image: { url: pp } }, { upload: conn.waUploadToServer }))
+        },
+        contextInfo: { 
+          	mentionedJid: [m.sender], 
+        	isForwarded: true, 
+	        forwardedNewsletterMessageInfo: {
+			newsletterJid: '120363194444713984@newsletter',
+			newsletterName: "DarkNessMD", 
+			serverMessageId: -1
+		}
+          }, 
+        nativeFlowMessage: { 
+            buttons: [{ 
+                name: "quick_reply",
+                buttonParamsJson: `{"display_text":"Owner","id":".owner"}`
+            }]
+        }
+    };
+
+    const message = { 
+        messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 }, 
+        interactiveMessage 
+    };
+
+    await conn.relayMessage(m.chat, { viewOnceMessage: { message } }, {});
     m.react('📚') 
   } catch (e) {
     conn.reply(m.chat, 'An error occurred', m)
